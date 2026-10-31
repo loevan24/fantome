@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2775.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1"><br></p>
+<p class="p2">&lt;!DOCTYPE html&gt;</p>
+<p class="p2">&lt;html lang="fr"&gt;</p>
+<p class="p2">&lt;head&gt;</p>
+<p class="p2">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p2">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</p>
+<p class="p2">&lt;meta name="theme-color" content="#05040b"&gt;</p>
+<p class="p2">&lt;title&gt;PHANTOM — Chaxe&lt;/title&gt;</p>
+<p class="p2">&lt;style&gt;</p>
+<p class="p2">*{box-sizing:border-box}</p>
+<p class="p2">body{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>margin:0;min-height:100vh;background:radial-gradient(ellipse at center,#171027 0%,#080711 55%,#020207 100%);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>color:#e9e3ff;font-family:Georgia,serif;overflow:hidden;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>display:flex;align-items:center;justify-content:center;text-align:center;</p>
+<p class="p2">}</p>
+<p class="p2">main{width:min(92vw,600px);padding:24px;position:relative;z-index:2}</p>
+<p class="p2">h1{letter-spacing:10px;font-family:Arial,sans-serif;font-size:clamp(28px,8vw,48px);color:#c6b4ff;text-shadow:0 0 22px #986cff}</p>
+<p class="p2">.subtitle{color:#8f83a8;letter-spacing:4px;font:11px Arial,sans-serif}</p>
+<p class="p2">#ghost{height:270px;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.5) translateY(40px);transition:all 1.5s ease;filter:drop-shadow(0 0 28px #a68aff)}</p>
+<p class="p2">#ghost.visible{opacity:1;transform:scale(1) translateY(0)}</p>
+<p class="p2">.ghost-shape{position:relative;width:155px;height:190px;border-radius:48% 48% 35% 35%;background:linear-gradient(120deg,rgba(225,225,255,.9),rgba(129,111,185,.42) 55%,rgba(45,35,75,.12));box-shadow:inset -18px -5px 35px #514274,0 0 45px #8c70e8;animation:float 3s ease-in-out infinite}</p>
+<p class="p2">.ghost-shape:after{content:"";position:absolute;bottom:-48px;left:0;width:100%;height:80px;background:linear-gradient(to bottom,rgba(180,166,255,.5),transparent);clip-path:polygon(0 0,100% 0,85% 45%,68% 20%,50% 65%,30% 20%,12% 55%)}</p>
+<p class="p2">.eyes{position:absolute;top:72px;left:0;width:100%;display:flex;justify-content:center;gap:38px}</p>
+<p class="p2">.eyes span{width:13px;height:20px;border-radius:50%;background:#24113d;box-shadow:0 0 13px #21103c}</p>
+<p class="p2">@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}</p>
+<p class="p2">#status{font:12px Arial,sans-serif;letter-spacing:2px;color:#9c8cb9;margin:15px 0}</p>
+<p class="p2">#message{min-height:70px;font-size:clamp(18px,4vw,23px);line-height:1.5;color:#eee7ff;text-shadow:0 0 12px #8e72d4}</p>
+<p class="p2">button{margin-top:20px;border:1px solid #8d72c9;background:#211633;color:#eee7ff;padding:15px 24px;border-radius:30px;font-size:14px;letter-spacing:2px;cursor:pointer}</p>
+<p class="p2">button:active{transform:scale(.97)}</p>
+<p class="p2">#hint{font:11px Arial,sans-serif;color:#746987;line-height:1.7;margin-top:22px}</p>
+<p class="p2">.wind{position:fixed;inset:-20%;pointer-events:none;opacity:0;background:repeating-linear-gradient(170deg,transparent 0 35px,rgba(190,180,255,.10) 36px,transparent 38px);transform:translateX(-100%);z-index:1}</p>
+<p class="p2">.wind.active{opacity:1;animation:gust .8s linear 4}</p>
+<p class="p2">@keyframes gust{to{transform:translateX(100%)}}</p>
+<p class="p2">body.haunted{background:radial-gradient(ellipse at center,#29113c,#080711 65%,#020207)}</p>
+<p class="p2">&lt;/style&gt;</p>
+<p class="p2">&lt;/head&gt;</p>
+<p class="p2">&lt;body&gt;</p>
+<p class="p2">&lt;div class="wind" id="wind"&gt;&lt;/div&gt;</p>
+<p class="p2">&lt;main&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;div class="subtitle"&gt;EXPÉRIENCE PARANORMALE&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;h1&gt;PHANTOM&lt;/h1&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;div id="ghost"&gt;&lt;div class="ghost-shape"&gt;&lt;div class="eyes"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;div id="status"&gt;CHAXE EST EN SOMMEIL&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;div id="message"&gt;Le silence règne… Prononce son invocation.&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;button id="activate"&gt;ACTIVER LE MICRO&lt;/button&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>&lt;div id="hint"&gt;Dis : « J'invoque ici le démon Chaxe »&lt;br&gt;Pour le renvoyer : « Démon Chaxe, disparais »&lt;br&gt;&lt;br&gt;Garde cette page ouverte et ton écran allumé.&lt;/div&gt;</p>
+<p class="p2">&lt;/main&gt;</p>
+<p class="p2">&lt;script&gt;</p>
+<p class="p2">const statusEl=document.getElementById("status");</p>
+<p class="p2">const messageEl=document.getElementById("message");</p>
+<p class="p2">const ghost=document.getElementById("ghost");</p>
+<p class="p2">const button=document.getElementById("activate");</p>
+<p class="p2">const wind=document.getElementById("wind");</p>
+<p class="p1"><br></p>
+<p class="p2">const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;</p>
+<p class="p2">let recognition=null;</p>
+<p class="p2">let listening=false;</p>
+<p class="p2">let speaking=false;</p>
+<p class="p2">let summoned=false;</p>
+<p class="p2">let restarting=false;</p>
+<p class="p2">let audioContext=null;</p>
+<p class="p1"><br></p>
+<p class="p2">function normalize(s){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")</p>
+<p class="p2"><span class="Apple-converted-space">  </span>.replace(/[’']/g," ").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();</p>
+<p class="p2">}</p>
+<p class="p2">function startListening(){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(!recognition||!listening||speaking||restarting)return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>restarting=true;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>try{recognition.start()}catch(e){}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>setTimeout(()=&gt;restarting=false,500);</p>
+<p class="p2">}</p>
+<p class="p2">function makeWind(){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>try{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(audioContext.state==="suspended")audioContext.resume();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const length=audioContext.sampleRate*2;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const buffer=audioContext.createBuffer(1,length,audioContext.sampleRate);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const data=buffer.getChannelData(0);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>for(let i=0;i&lt;length;i++)data[i]=Math.random()*2-1;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const source=audioContext.createBufferSource();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>source.buffer=buffer;source.loop=true;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const filter=audioContext.createBiquadFilter();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>filter.type="lowpass";filter.frequency.value=450;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const gain=audioContext.createGain();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>gain.gain.setValueAtTime(0.001,audioContext.currentTime);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>gain.gain.linearRampToValueAtTime(0.20,audioContext.currentTime+0.5);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>gain.gain.linearRampToValueAtTime(0.001,audioContext.currentTime+3);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>source.connect(filter);filter.connect(gain);gain.connect(audioContext.destination);</p>
+<p class="p2"><span class="Apple-converted-space">  </span>source.start();source.stop(audioContext.currentTime+3.1);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}catch(e){}</p>
+<p class="p2">}</p>
+<p class="p2">function speak(text,after){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(!("speechSynthesis" in window)){messageEl.textContent=text; if(after)after();return;}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>speaking=true;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>try{recognition&amp;&amp;recognition.stop()}catch(e){}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>speechSynthesis.cancel();</p>
+<p class="p2"><span class="Apple-converted-space"> </span>messageEl.textContent=text;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>const utterance=new SpeechSynthesisUtterance(text);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.lang="fr-FR";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.rate=0.82;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.pitch=0.55;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.volume=1;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>const voices=speechSynthesis.getVoices();</p>
+<p class="p2"><span class="Apple-converted-space"> </span>const french=voices.find(v=&gt;v.lang.toLowerCase().startsWith("fr"));</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(french)utterance.voice=french;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.onend=()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speaking=false;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(after)after();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>setTimeout(startListening,700);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2"><span class="Apple-converted-space"> </span>utterance.onerror=()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speaking=false;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(after)after();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>setTimeout(startListening,700);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2"><span class="Apple-converted-space"> </span>speechSynthesis.speak(utterance);</p>
+<p class="p2">}</p>
+<p class="p2">function summon(){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(summoned)return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>summoned=true;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>document.body.classList.add("haunted");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>ghost.classList.add("visible");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>statusEl.textContent="CHAXE EST PARMI NOUS";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>wind.classList.add("active");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>makeWind();</p>
+<p class="p2"><span class="Apple-converted-space"> </span>setTimeout(()=&gt;wind.classList.remove("active"),3500);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>speak("Je t'écoute… Parle, humain.");</p>
+<p class="p2">}</p>
+<p class="p2">function disappear(){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(!summoned)return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>summoned=false;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>statusEl.textContent="CHAXE RETOURNE DANS LES TÉNÈBRES";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>wind.classList.add("active");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>makeWind();</p>
+<p class="p2"><span class="Apple-converted-space"> </span>speak("Tu as de la chance, humain… Nous nous reverrons.",()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>ghost.classList.remove("visible");</p>
+<p class="p2"><span class="Apple-converted-space">  </span>document.body.classList.remove("haunted");</p>
+<p class="p2"><span class="Apple-converted-space">  </span>statusEl.textContent="CHAXE EST EN SOMMEIL";</p>
+<p class="p2"><span class="Apple-converted-space">  </span>messageEl.textContent="Le silence règne… Prononce son invocation.";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>});</p>
+<p class="p2">}</p>
+<p class="p2">function reply(text){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>const t=normalize(text);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(t.includes("demon chaxe disparais")||t.includes("chaxe disparais")||t.includes("disparais chaxe")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>disappear();return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(!summoned){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(t.includes("invoque")&amp;&amp;t.includes("chaxe"))summon();</p>
+<p class="p2"><span class="Apple-converted-space">  </span>return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(t.includes("bonbon")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(t.includes("non")||t.includes("pas encore")||t.includes("trouve")){</p>
+<p class="p2"><span class="Apple-converted-space">   </span>speak("Comment oses-tu revenir les mains vides… ? Je commence à perdre patience…");</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}else{</p>
+<p class="p2"><span class="Apple-converted-space">   </span>speak("Les bonbons… Donne-les-moi, humain. Ne me fais pas attendre.");</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}else if(t.includes("bonjour")||t.includes("salut")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speak("Ne me salue pas comme un ami… Je suis Chaxe, le maître des ombres.");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}else if(t.includes("qui es tu")||t.includes("qui es tu")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speak("Je suis Chaxe. Une présence venue d'un endroit où la lumière ne va jamais.");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}else if(t.includes("merci")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speak("Garde tes remerciements, humain. Ils ne m'intéressent guère.");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}else if(t.includes("peur")){</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speak("Tu devrais avoir peur… Mais j'aime le courage. Pour l'instant.");</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}else{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>const replies=[</p>
+<p class="p2"><span class="Apple-converted-space">   </span>"Hmm… Voilà qui est intéressant. Continue, humain.",</p>
+<p class="p2"><span class="Apple-converted-space">   </span>"Je t'écoute. Choisis bien tes mots…",</p>
+<p class="p2"><span class="Apple-converted-space">   </span>"Ha ha ha… Tu ignores à qui tu t'adresses.",</p>
+<p class="p2"><span class="Apple-converted-space">   </span>"Les ombres m'ont murmuré quelque chose à ton sujet…",</p>
+<p class="p2"><span class="Apple-converted-space">   </span>"Parle encore. Je ne suis pas d'humeur à attendre."</p>
+<p class="p2"><span class="Apple-converted-space">  </span>];</p>
+<p class="p2"><span class="Apple-converted-space">  </span>speak(replies[Math.floor(Math.random()*replies.length)]);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(Math.random()&lt;0.18)setTimeout(()=&gt;{if(summoned&amp;&amp;!speaking)speak("Ha… ha… ha…");},5000);</p>
+<p class="p2">}</p>
+<p class="p1"><br></p>
+<p class="p2">if(!SpeechRecognition){</p>
+<p class="p2"><span class="Apple-converted-space"> </span>statusEl.textContent="RECONNAISSANCE VOCALE NON DISPONIBLE";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>messageEl.textContent="Essaie avec Google Chrome sur Android.";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>button.textContent="NAVIGATEUR INCOMPATIBLE";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>button.disabled=true;</p>
+<p class="p2">}else{</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition=new SpeechRecognition();</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.lang="fr-FR";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.continuous=true;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.interimResults=false;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.maxAlternatives=1;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.onstart=()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>restarting=false;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>statusEl.textContent=summoned?"CHAXE T'ÉCOUTE":"EN VEILLE — J'ÉCOUTE L'INVOCATION";</p>
+<p class="p2"><span class="Apple-converted-space">  </span>button.textContent="MICRO ACTIVÉ";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.onresult=(event)=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>for(let i=event.resultIndex;i&lt;event.results.length;i++){</p>
+<p class="p2"><span class="Apple-converted-space">   </span>if(event.results[i].isFinal){</p>
+<p class="p2"><span class="Apple-converted-space">    </span>const words=event.results[i][0].transcript.trim();</p>
+<p class="p2"><span class="Apple-converted-space">    </span>if(words)reply(words);</p>
+<p class="p2"><span class="Apple-converted-space">   </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.onerror=(event)=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(event.error==="not-allowed"||event.error==="service-not-allowed"){</p>
+<p class="p2"><span class="Apple-converted-space">   </span>listening=false;</p>
+<p class="p2"><span class="Apple-converted-space">   </span>statusEl.textContent="ACCÈS AU MICRO REFUSÉ";</p>
+<p class="p2"><span class="Apple-converted-space">   </span>messageEl.textContent="Autorise le micro dans les paramètres du navigateur, puis recharge la page.";</p>
+<p class="p2"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2"><span class="Apple-converted-space"> </span>recognition.onend=()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space">  </span>restarting=false;</p>
+<p class="p2"><span class="Apple-converted-space">  </span>if(listening&amp;&amp;!speaking)setTimeout(startListening,800);</p>
+<p class="p2"><span class="Apple-converted-space"> </span>};</p>
+<p class="p2">}</p>
+<p class="p2">button.addEventListener("click",()=&gt;{</p>
+<p class="p2"><span class="Apple-converted-space"> </span>if(!recognition)return;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>listening=true;</p>
+<p class="p2"><span class="Apple-converted-space"> </span>button.textContent="DÉMARRAGE…";</p>
+<p class="p2"><span class="Apple-converted-space"> </span>startListening();</p>
+<p class="p2">});</p>
+<p class="p2">&lt;/script&gt;</p>
+<p class="p2">&lt;/body&gt;</p>
+<p class="p2">&lt;/html&gt;</p>
+</body>
+</html>
